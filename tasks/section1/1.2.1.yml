@@ -5,7 +5,9 @@
 #  yum repolist will exit without erros.
 
 - name: 1.2.1 Ensure package manager repositories are configured (Not Scored)
-  shell: yum repolist
+  command: yum repolist
+  args:
+    warn: False
   changed_when: false
   tags:
     - section1
