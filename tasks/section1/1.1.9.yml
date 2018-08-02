@@ -7,8 +7,9 @@
     state: mounted
     fstype: "{{ item.fstype }}"
     src: "{{ item.device }}"
-    opts: "{{ item.options.split(',') | union(['nosuid']) | join(',') }}"
+    opts: "{{ ((var_tmp_mount and var_tmp_mount.results[0].opts) or item.options).split(',') | union(['nosuid']) | join(',') }}"
   with_items: "{{ ansible_mounts | selectattr('mount', 'equalto', '/var/tmp') | list }}"
+  register: var_tmp_mount
   tags:
     - level1
     - section1

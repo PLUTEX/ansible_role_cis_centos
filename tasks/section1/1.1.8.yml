@@ -9,6 +9,7 @@
     src: "{{ item.device }}"
     opts: "{{ item.options.split(',') | union(['nodev']) | join(',') }}"
   with_items: "{{ ansible_mounts | selectattr('mount', 'equalto', '/var/tmp') | list }}"
+  register: var_tmp_mount
   tags:
     - level1
     - section1
