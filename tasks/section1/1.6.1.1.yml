@@ -6,7 +6,6 @@
     dest: /etc/default/grub
     regexp: '(selinux|enforcing)\s*=\s*0\s*'
     follow: yes
-    register: selinux_grub_patch
   ignore_errors: yes
   when: not cis_selinux_disabled
   notify: generate new grub config
