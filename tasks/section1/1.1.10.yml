@@ -9,9 +9,3 @@
     src: "{{ item.device }}"
     opts: "{{ ((var_tmp_mount and var_tmp_mount.results[0].opts) or item.options).split(',') | union(['noexec']) | join(',') }}"
   with_items: "{{ ansible_mounts | selectattr('mount', 'equalto', '/var/tmp') | list }}"
-  tags:
-    - level1
-    - section1
-    - section1_level1
-    - "1.1.9"
-    - scored

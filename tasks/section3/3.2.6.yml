@@ -9,9 +9,3 @@
     reload: yes
     sysctl_set: yes
     ignoreerrors: yes
-  tags:
-    - level1
-    - section3
-    - section3_level1
-    - scored
-    - "3.2.6"

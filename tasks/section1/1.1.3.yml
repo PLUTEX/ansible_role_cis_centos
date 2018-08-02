@@ -12,24 +12,12 @@
     opts: "{{ item.options.split(',') | union(['nodev']) | join(',') }}"
   with_items: "{{ ansible_mounts | selectattr('mount', 'equalto', '/tmp') | list }}"
   register: tmp_mounted
-  tags:
-    - level1
-    - section1
-    - section1_level1
-    - "1.1.3"
-    - scored
 
 - name: 1.1.3 - Check if systemd tmp.mount unit-file exists
   stat:
     path: /etc/systemd/system/local-fs.target.wants/tmp.mount
   register: unitfile
   when: not tmp_mounted.changed
-  tags:
-    - level1
-    - section1_level1
-    - section1
-    - "1.1.3"
-    - scored
 
 - name: "1.1.3 - Ensure nodev option set on /tmp partition\n
          1.1.4 - 1.1.4 Ensure nosuid option set on /tmp partition (Scored)\n
@@ -40,11 +28,4 @@
     insertafter: "^Type="
     line: "Options=mode=1777,strictatime,noexec,nodev,nosuid"
   when: unitfile.stat.exists and not tmp_mounted.changed
-  tags:
-    - level1
-    - section1_level1
-    - section1
-    - "1.1.3"
-    - scored
   notify: restart tmp.mount
-

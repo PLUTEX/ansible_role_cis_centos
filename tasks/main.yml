@@ -12,15 +12,23 @@
 - include: "section1.yml"
   become: yes
   when: cis_section1
+  tags:
+    - section1
 
 - include: "section2.yml"
   become: yes
   when: cis_section2
+  tags:
+    - section2
 
 - include: "section3.yml"
   become: yes
   when: cis_section3
+  tags:
+    - section3
 
 - include: "section4.yml"
   become: yes
   when: cis_section4
+  tags:
+    - section4

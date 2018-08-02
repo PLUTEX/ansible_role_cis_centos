@@ -5,9 +5,3 @@
   yum:
     name: setroubleshoot
     state: absent
-  tags:
-    - level2
-    - section1
-    - section1_level2
-    - scored
-    - "1.6.1.4"

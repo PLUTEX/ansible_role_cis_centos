@@ -6,11 +6,6 @@
     name: ntp
     state: present
   when: cis_enable_ntp
-  tags:
-    - level1
-    - section2
-    - section2_level1
-    - "2.2.1.1"
 
 - name: 2.2.1.1 Ensure time synchronization is in use - service start (Not Scored)
   systemd:
@@ -18,11 +13,6 @@
     state: started
     enabled: yes
   when: cis_enable_ntp
-  tags:
-    - level1
-    - section2
-    - section2_level1
-    - "2.2.1.1"
 
 - name: 2.2.1.1 Ensure time synchronization is in use - service stop (Not Scored)
   systemd:
@@ -30,23 +20,12 @@
     state: stopped
     enabled: no
   when: cis_enable_chrony and ntpd_service_status.stdout == "loaded"
-  tags:
-    - level1
-    - section2
-    - section2_level1
-    - "2.2.1.1"
-
 
 - name: 2.2.1.1 Ensure time synchronization is in use (Not Scored)
   yum:
     name: chrony
     state: present
   when: cis_enable_chrony
-  tags:
-    - level1
-    - section2
-    - section2_level1
-    - "2.2.1.1"
 
 - name: 2.2.1.1 Ensure time synchronization is in use - service start (Not Scored)
   systemd:
@@ -54,11 +33,6 @@
     state: started
     enabled: yes
   when: cis_enable_chrony
-  tags:
-    - level1
-    - section2
-    - section2_level1
-    - "2.2.1.1"
 
 - name: 2.2.1.1 Ensure time synchronization is in use - service stop (Not Scored)
   systemd:
@@ -66,8 +40,3 @@
     state: stopped
     enabled: no
   when: cis_enable_ntp and chronyd_service_status.stdout == "loaded"
-  tags:
-    - level1
-    - section2
-    - section2_level1
-    - "2.2.1.1"

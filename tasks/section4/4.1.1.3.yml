@@ -7,9 +7,3 @@
      regexp: "^max_log_file_action"
      line: "max_log_file_action = keep_logs"
      state: present
-  tags:
-     - section4
-     - level2
-     - section4_level2
-     - "4.1.1.3"
-     - "scored"

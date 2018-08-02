@@ -3,105 +3,279 @@
 
 - include: section2/2.1.1.yml
   when: "'2.1.1' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.1.1"
 
 - include: section2/2.1.2.yml
   when: "'2.1.2' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.1.2"
 
 - include: section2/2.1.3.yml
   when: "'2.1.3' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.1.3"
 
 - include: section2/2.1.4.yml
   when: "'2.1.4' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.1.4"
 
 - include: section2/2.1.5.yml
   when: "'2.1.5' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.1.5"
 
 - include: section2/2.1.6.yml
   when: "'2.1.6' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.1.6"
 
 - include: section2/2.1.7.yml
   when: "'2.1.7' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.1.7"
 
 - include: section2/2.2.1.1.yml
   when: "'2.2.1.1' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - "2.2.1.1"
 
 - include: section2/2.2.1.2.yml
   when: "'2.2.1.2' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.1.2"
 
 - include: section2/2.2.1.3.yml
   when: "'2.2.1.3' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.1.3"
 
 - include: section2/2.2.2.yml
   when: "'2.2.2' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.2"
 
 - include: section2/2.2.3.yml
   when: "'2.2.3' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.3"
 
 - include: section2/2.2.4.yml
   when: "'2.2.4' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.4"
 
 - include: section2/2.2.5.yml
   when: "'2.2.5' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.5"
 
 - include: section2/2.2.6.yml
   when: "'2.2.6' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.6"
 
 - include: section2/2.2.7.yml
   when: "'2.2.7' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.7"
 
 - include: section2/2.2.8.yml
   when: "'2.2.8' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.8"
 
 - include: section2/2.2.9.yml
   when: "'2.2.9' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.9"
 
 - include: section2/2.2.10.yml
   when: "'2.2.10' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.10"
 
 - include: section2/2.2.11.yml
   when: "'2.2.11' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.11"
 
 - include: section2/2.2.12.yml
   when: "'2.2.12' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.12"
 
 - include: section2/2.2.13.yml
   when: "'2.2.13' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.13"
 
 - include: section2/2.2.14.yml
   when: "'2.2.14' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.14"
 
 - include: section2/2.2.15.yml
   when: "'2.2.15' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.15"
 
 - include: section2/2.2.16.yml
   when: "'2.2.16' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.16"
 
 - include: section2/2.2.17.yml
   when: "'2.2.17' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.17"
 
 - include: section2/2.2.18.yml
   when: "'2.2.18' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.18"
 
 - include: section2/2.2.19.yml
   when: "'2.2.19' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.19"
 
 - include: section2/2.2.20.yml
   when: "'2.2.20' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.20"
 
 - include: section2/2.2.21.yml
   when: "'2.2.21' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.2.21"
 
 - include: section2/2.3.1.yml
   when: "'2.3.1' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.3.1"
 
 - include: section2/2.3.2.yml
   when: "'2.3.2' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.3.2"
 
 - include: section2/2.3.3.yml
   when: "'2.3.3' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.3.3"
 
 - include: section2/2.3.4.yml
   when: "'2.3.4' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.3.4"
 
 - include: section2/2.3.5.yml
   when: "'2.3.5' not in cis_level_1_exclusions"
+  tags:
+    - level1
+    - section2_level1
+    - scored
+    - "2.3.5"

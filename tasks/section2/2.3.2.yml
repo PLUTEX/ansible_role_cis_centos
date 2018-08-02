@@ -6,9 +6,3 @@
     name: rsh
     state: absent
   when: cis_rsh_required == false
-  tags:
-    - level1
-    - section2
-    - section2_level1
-    - scored
-    - "2.3.2"

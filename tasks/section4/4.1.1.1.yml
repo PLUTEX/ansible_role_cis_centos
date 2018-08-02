@@ -7,8 +7,3 @@
      regexp: "^max_log_file"
      line: "max_log_file = {{ cis_auditd_max_log_size | default(10) }}"
      state: present
-  tags:
-     - section4
-     - level2
-     - section4_level2
-     - "4.1.1.1"

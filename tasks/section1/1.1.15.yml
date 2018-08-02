@@ -12,9 +12,3 @@
     fstype: tmpfs
     src: tmpfs
     opts: nodev,nosuid,noexec
-  tags:
-    - level1
-    - section1
-    - section1_level1
-    - "1.1.15"
-    - scored

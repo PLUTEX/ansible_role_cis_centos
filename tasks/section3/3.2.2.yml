@@ -12,9 +12,3 @@
   with_items:
     - net.ipv4.conf.all.accept_redirects
     - net.ipv4.conf.default.accept_redirects
-  tags:
-    - level1
-    - section3
-    - section3_level1
-    - scored
-    - "3.2.2"

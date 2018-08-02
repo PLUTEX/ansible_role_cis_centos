@@ -8,9 +8,3 @@
   with_items:
     - "iptables"
     - "iptables-services"
-  tags:
-    - level1
-    - level1_section3
-    - section3
-    - scored
-    - "3.6.1"

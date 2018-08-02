@@ -8,12 +8,6 @@
     owner: root
     group: root
     mode: 0644
-  tags:
-    - level1
-    - section1
-    - section1_level1
-    - scored
-    - "1.5.1"
 
 - name: 1.5.1 Ensure core dumps are restricted sysctl (Scored)
   sysctl:
@@ -23,9 +17,3 @@
     reload: yes
     sysctl_set: yes
     ignoreerrors: yes
-  tags:
-    - level1
-    - section1
-    - section1_level1
-    - scored
-    - "1.5.1"

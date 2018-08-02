@@ -9,8 +9,3 @@
   args:
     warn: False
   changed_when: false
-  tags:
-    - section1
-    - level1
-    - section1_level1
-    - "1.2.1"

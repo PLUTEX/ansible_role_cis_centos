@@ -3,9 +3,4 @@
 - name: 1.1.11 Ensure separate partition exists for /var/log (Scored)
   debug: msg="***Manually create separete /var/log partition"
   when: "not (ansible_mounts | selectattr('mount', 'equalto', '/var/log') | list)"
-  tags:
-    - section1
-    - level2
-    - section1_level2
-    - "1.1.11"
 

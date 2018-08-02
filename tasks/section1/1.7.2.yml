@@ -6,12 +6,6 @@
     path: /etc/dconf/profile/gdm
   register: gdm_stat
   check_mode: false
-  tags:
-    - level1
-    - section1
-    - section1_level1
-    - scored
-    - "1.7.2"
 
 - name: 1.7.2 Ensure GDM login banner is configured (Scored)
   copy:
@@ -22,12 +16,6 @@
     mode: 0644
   notify: update gdb
   when: gdm_stat.stat.exists
-  tags:
-    - level1
-    - section1
-    - section1_level1
-    - scored
-    - "1.7.2"
 
 - name: 1.7.2 Ensure GDM login banner is configured (Scored)
   template:
@@ -38,10 +26,3 @@
     mode: 0644
   notify: update gdb
   when: gdm_stat.stat.exists
-  tags:
-    - level1
-    - section1
-    - section1_level1
-    - scored
-    - "1.7.2"
-

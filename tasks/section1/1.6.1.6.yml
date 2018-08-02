@@ -6,19 +6,7 @@
   register: initrc
   changed_when: initrc.stdout_lines
   check_mode: false
-  tags:
-    - level2
-    - section1
-    - section1_level2
-    - scored
-    - "1.6.1.6"
 
 - name: 1.6.1.6 Manual check for no unconfined daemons required (Scored)
   debug: msg="*** Manual check required ***"
   when: initrc.stdout_lines
-  tags:
-    - level2
-    - section1
-    - section1_level2
-    - scored
-    - "1.6.1.6"

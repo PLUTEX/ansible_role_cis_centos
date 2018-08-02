@@ -10,9 +10,3 @@
     - tftp-dgram
     - tftp-stream
   when: tftp_service_status.changed
-  tags:
-    - level1
-    - section2
-    - section2_level1
-    - scored
-    - "2.1.6"

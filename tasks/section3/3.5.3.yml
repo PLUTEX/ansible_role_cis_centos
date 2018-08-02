@@ -5,11 +5,6 @@
   stat:
     path: "{{ cis_modprobe_conf_filename }}"
   register: modprobe_3_5_3
-  tags:
-    - level1
-    - level1_section3
-    - section3
-    - "3.5.3"
 
 - name: 3.5.3 - Check if RDS is disabled
   command: modprobe -n -v rds
@@ -17,21 +12,11 @@
   changed_when: mod_rds.stdout is search('rds')
   check_mode: false
   failed_when: mod_rds.rc not in (0,1)
-  tags:
-    - level1
-    - level1_section3
-    - section3
-    - "3.5.3"
 
 - name: 3.5.3 - Check if RDS is loaded
   command: lsmod
   check_mode: false
   register: lsmod
-  tags:
-    - level1
-    - level1_section3
-    - section3
-    - "3.5.3"
   changed_when: lsmod.stdout is search('rds')
 
 - name: Unload RDS if required
@@ -39,11 +24,6 @@
   register: mod_rds_remove
   changed_when: mod_rds_remove.rc == 0
   when: lsmod.stdout is search('rds.*')
-  tags:
-    - level1
-    - level1_section3
-    - section3
-    - "3.5.3"
 
 - name: 3.5.3 Ensure RDS is disabled (Not Scored)
   lineinfile: 
@@ -51,8 +31,3 @@
     regexp: "^install rds" 
     line: "install rds /bin/true" 
   when: modprobe_3_5_3.stat.exists is defined and modprobe_3_5_3.stat.exists
-  tags:
-    - level1
-    - level1_section3
-    - section3
-    - "3.5.3"

@@ -7,8 +7,3 @@
     policy: "{{ cis_selinux_policy }}"
     state: disabled
   when: cis_selinux_disabled
-  tags:
-    - level2
-    - section1
-    - section1_level2
-    - "1.6.1.2"

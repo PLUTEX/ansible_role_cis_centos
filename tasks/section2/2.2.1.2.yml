@@ -10,12 +10,6 @@
       mode: 0644
   notify: restart ntpd
   when: cis_enable_ntp
-  tags:
-      - level1
-      - section2
-      - section2_level1
-      - scored
-      - "2.2.1.2"
 
 - name: 2.2.1.2 Ensure ntp is configured (Scored)
   lineinfile:
@@ -24,9 +18,3 @@
       line: "OPTIONS=\"-u ntp:ntp\""
   when: cis_enable_ntp
   notify: restart ntpd
-  tags:
-    - level1
-    - section2
-    - section2_level1
-    - scored
-    - "2.2.1.2"

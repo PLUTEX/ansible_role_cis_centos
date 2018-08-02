@@ -9,9 +9,3 @@
     src: "{{ item.device }}"
     opts: "{{ item.options.split(',') | union(['nosuid']) | join(',') }}"
   with_items: "{{ ansible_mounts | selectattr('mount', 'equalto', '/tmp') | list }}"
-  tags:
-    - level1
-    - section1
-    - section1_level1
-    - "1.1.4"
-    - scored

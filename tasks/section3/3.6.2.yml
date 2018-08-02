@@ -9,12 +9,6 @@
     masked: yes
   when: firewalld_service_status.stdout == "loaded" and
         cis_firewall_default_policy == true
-  tags:
-    - level1
-    - level1_section3
-    - section3
-    - scored
-    - "3.6.2"
 
 - name: 3.6.2 Set default policy to ACCEPT
   command: /sbin/iptables -P {{ item }} ACCEPT
@@ -26,11 +20,6 @@
     - FORWARD
   register: accept
   tags:
-    - level1
-    - level1_section3
-    - section3
-    - scored
-    - "3.6.2"
     - "3.6.4"
 
 - name: 3.6.2 CleanUP iptables configuration
@@ -41,12 +30,6 @@
     - "--zero"
   when: cis_firewall_default_policy == true and accept is changed
   register: flush
-  tags:
-    - level1
-    - level1_section3
-    - section3
-    - scored
-    - "3.6.2"
 
 - name: 3.6.2 Enable SSH access
   iptables:
@@ -56,12 +39,6 @@
      protocol: tcp
      jump: ACCEPT
   when: cis_firewall_default_policy == true and flush is changed
-  tags:
-    - level1
-    - level1_section3
-    - section3
-    - scored
-    - "3.6.2"
 
 - name: 3.6.4 Ensure outbound and established connections are configured (Not Scored)
   iptables:
@@ -70,11 +47,6 @@
      jump: ACCEPT
   when: cis_firewall_default_policy == true and flush is changed
   tags:
-    - level1
-    - level1_section3
-    - section3
-    - scored
-    - "3.6.4"
     - "3.6.2"
 
 - name:  3.6.4 Ensure outbound and established connections are configured (Not Scored)
@@ -84,11 +56,6 @@
      jump: ACCEPT
   when: cis_firewall_default_policy == true and flush is changed
   tags:
-    - level1
-    - level1_section3
-    - section3
-    - scored
-    - "3.6.4"
     - "3.6.2"
 
 - name: 3.6.2 Ensure default deny firewall policy (Scored)
@@ -99,11 +66,6 @@
     - OUTPUT
     - FORWARD
   tags:
-    - level1
-    - level1_section3
-    - section3
-    - scored
-    - "3.6.2"
     - "3.6.4"
   register: fw
 
@@ -112,11 +74,6 @@
   notify: restart iptables
   when: fw is changed
   tags:
-    - level1
-    - level1_section3
-    - section3
-    - scored
-    - "3.6.2"
     - "3.6.4"
 
 - name: 3.6.2 Enabled and start iptables
@@ -126,9 +83,4 @@
     enabled: yes
   when: fw is changed
   tags:
-    - level1
-    - level1_section3
-    - section3
-    - scored
-    - "3.6.2"
     - "3.6.4"

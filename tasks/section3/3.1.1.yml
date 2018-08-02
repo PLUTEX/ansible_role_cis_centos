@@ -10,9 +10,3 @@
     sysctl_set: yes
     ignoreerrors: yes
   when: cis_hostonly
-  tags:
-    - level1
-    - section3
-    - section3_level1
-    - scored
-    - "3.1.1"

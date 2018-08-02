@@ -7,10 +7,4 @@
     regexp: "^(#)?inet_interfaces"
     line: "inet_interfaces = localhost"
   when: cis_mail_server == false and postfix_installed.results[1].yumstate == 'installed'
-  tags:
-    - level1
-    - section2
-    - section2_level1
-    - scored
-    - "2.2.15"
   notify: restart postfix

@@ -7,9 +7,3 @@
      regexp: "^admin_space_left"
      line: "admin_space_left_action = halt"
      state: present
-  tags:
-     - section4
-     - level2
-     - section4_level2
-     - "4.1.1.2"
-     - "scored"

@@ -7,9 +7,3 @@
     state: stopped
     enabled: no
   when: cis_dhcp_server == false and dhcpd_service_status.stdout == "loaded"
-  tags:
-    - level1
-    - section2
-    - section2_level1
-    - scored
-    - "2.2.5"

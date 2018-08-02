@@ -6,9 +6,3 @@
     name: auditd
     state: started
     enabled: yes
-  tags:
-     - section4
-     - level2
-     - section4_level2
-     - "4.1.2"
-     - "scored"

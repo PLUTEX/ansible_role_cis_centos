@@ -5,8 +5,3 @@
   yum:
     name: "*"
     state: latest
-  tags:
-    - level1
-    - section1
-    - section1_level1
-    - "1.8"

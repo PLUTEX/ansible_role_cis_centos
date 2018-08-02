@@ -9,9 +9,3 @@
   with_items:
     - /usr/lib/systemd/system/rescue.service
     - /usr/lib/systemd/system/emergency.service
-  tags:
-    - section1
-    - level1
-    - section1_level1
-    - "1.4.3"
-
