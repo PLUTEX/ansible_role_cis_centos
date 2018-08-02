@@ -14,7 +14,7 @@
 - name: 3.3.3 - Check if IPv6 is disabled
   command: modprobe -n -v ipv6
   register: mod_ipv6
-  changed_when: mod_ipv6.stdout | search('ipv6')
+  changed_when: mod_ipv6.stdout is search('ipv6')
   check_mode: false
   failed_when: mod_ipv6.rc not in (0,1)
   tags:
@@ -32,13 +32,13 @@
     - level1_section3
     - section3
     - "3.3.3"
-  changed_when: lsmod.stdout | search('ipv6')
+  changed_when: lsmod.stdout is search('ipv6')
 
 - name: Unload IPv6 if required
   command: modprobe -r ipv6
   register: mod_ipv6_remove
   changed_when: mod_ipv6_remove.rc == 0
-  when: lsmod.stdout | search('ipv6.*')
+  when: lsmod.stdout is search('ipv6.*')
   tags:
     - level1
     - level1_section3

@@ -14,7 +14,7 @@
 - name: 1.1.1.6 - Check if squashfs is disabled
   command: modprobe -n -v squashfs
   register: mod_squashfs
-  changed_when: mod_squashfs.stdout | search('squashfs')
+  changed_when: mod_squashfs.stdout is search('squashfs')
   check_mode: false
   failed_when: mod_squashfs.rc not in (0,1)
   tags:
@@ -32,13 +32,13 @@
     - section1
     - "1.1.1.6"
     - scored
-  changed_when: lsmod.stdout | search('squashfs')
+  changed_when: lsmod.stdout is search('squashfs')
 
 - name: 1.1.1.6 - Unload squashfs if required
   command: modprobe -r squashfs
   register: mod_squashfs_remove
   changed_when: mod_squashfs_remove.rc == 0
-  when: lsmod.stdout | search('squashfs.*')
+  when: lsmod.stdout is search('squashfs.*')
   tags:
     - level1
     - section1

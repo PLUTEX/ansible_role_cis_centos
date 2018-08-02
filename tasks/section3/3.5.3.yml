@@ -14,7 +14,7 @@
 - name: 3.5.3 - Check if RDS is disabled
   command: modprobe -n -v rds
   register: mod_rds
-  changed_when: mod_rds.stdout | search('rds')
+  changed_when: mod_rds.stdout is search('rds')
   check_mode: false
   failed_when: mod_rds.rc not in (0,1)
   tags:
@@ -32,13 +32,13 @@
     - level1_section3
     - section3
     - "3.5.3"
-  changed_when: lsmod.stdout | search('rds')
+  changed_when: lsmod.stdout is search('rds')
 
 - name: Unload RDS if required
   command: modprobe -r rds
   register: mod_rds_remove
   changed_when: mod_rds_remove.rc == 0
-  when: lsmod.stdout | search('rds.*')
+  when: lsmod.stdout is search('rds.*')
   tags:
     - level1
     - level1_section3

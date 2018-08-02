@@ -14,7 +14,7 @@
 - name: 3.5.4 - Check if TIPC is disabled
   command: modprobe -n -v tipc
   register: mod_tipc
-  changed_when: mod_tipc.stdout | search('tipc')
+  changed_when: mod_tipc.stdout is search('tipc')
   check_mode: false
   failed_when: mod_tipc.rc not in (0,1)
   tags:
@@ -32,13 +32,13 @@
     - level1_section3
     - section3
     - "3.5.4"
-  changed_when: lsmod.stdout | search('tipc')
+  changed_when: lsmod.stdout is search('tipc')
 
 - name: Unload TIPC if required
   command: modprobe -r tipc
   register: mod_tipc_remove
   changed_when: mod_tipc_remove.rc == 0
-  when: lsmod.stdout | search('tipc.*')
+  when: lsmod.stdout is search('tipc.*')
   tags:
     - level1
     - level1_section3

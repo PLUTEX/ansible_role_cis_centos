@@ -14,7 +14,7 @@
 - name: 1.1.1.8 - Check if vfat is disabled
   command: modprobe -n -v vfat
   register: mod_vfat
-  changed_when: mod_vfat.stdout | search('vfat')
+  changed_when: mod_vfat.stdout is search('vfat')
   check_mode: false
   failed_when: mod_vfat.rc not in (0,1)
   tags:
@@ -32,13 +32,13 @@
     - section1
     - "1.1.1.8"
     - scored
-  changed_when: lsmod.stdout | search('vfat')
+  changed_when: lsmod.stdout is search('vfat')
 
 - name: 1.1.1.8 - Unload vfat if required
   command: modprobe -r vfat
   register: mod_vfat_remove
   changed_when: mod_vfat_remove.rc == 0
-  when: lsmod.stdout | search('vfat.*')
+  when: lsmod.stdout is search('vfat.*')
   tags:
     - level1
     - section1

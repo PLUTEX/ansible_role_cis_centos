@@ -15,7 +15,7 @@
   command: modprobe -n -v cramfs
   register: mod_cramfs
   check_mode: false
-  changed_when: mod_cramfs.stdout | search('cramfs')
+  changed_when: mod_cramfs.stdout is search('cramfs')
   tags:
     - level1
     - section1
@@ -31,13 +31,13 @@
     - section1
     - "1.1.1.1"
     - scored
-  changed_when: lsmod.stdout | search('cramfs')
+  changed_when: lsmod.stdout is search('cramfs')
 
 - name: 1.1.1.1 - Unload cramfs if required
   command: modprobe -r cramfs
   register: mod_cramfs_remove
   changed_when: mod_cramfs_remove.rc == 0
-  when: lsmod.stdout | search('cramfs.*')
+  when: lsmod.stdout is search('cramfs.*')
   tags:
     - level1
     - section1

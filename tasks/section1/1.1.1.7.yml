@@ -14,7 +14,7 @@
 - name: 1.1.1.7 - Check if udf is disabled
   command: modprobe -n -v udf
   register: mod_udf
-  changed_when: mod_udf.stdout | search('udf')
+  changed_when: mod_udf.stdout is search('udf')
   check_mode: false
   failed_when: mod_udf.rc not in (0,1)
   tags:
@@ -32,13 +32,13 @@
     - section1
     - "1.1.1.7"
     - scored
-  changed_when: lsmod.stdout | search('udf')
+  changed_when: lsmod.stdout is search('udf')
 
 - name: 1.1.1.7 - Unload udf if required
   command: modprobe -r udf
   register: mod_udf_remove
   changed_when: mod_udf_remove.rc == 0
-  when: lsmod.stdout | search('udf.*')
+  when: lsmod.stdout is search('udf.*')
   tags:
     - level1
     - section1

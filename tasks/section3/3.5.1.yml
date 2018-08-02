@@ -14,7 +14,7 @@
 - name: 3.5.1 - Check if DCCP is disabled
   command: modprobe -n -v dccp
   register: mod_dccp
-  changed_when: mod_dccp.stdout | search('dccp')
+  changed_when: mod_dccp.stdout is search('dccp')
   check_mode: false
   failed_when: mod_dccp.rc not in (0,1)
   tags:
@@ -32,13 +32,13 @@
     - level1_section3
     - section3
     - "3.5.1"
-  changed_when: lsmod.stdout | search('dccp')
+  changed_when: lsmod.stdout is search('dccp')
 
 - name: Unload DCCP if required
   command: modprobe -r dccp
   register: mod_dccp_remove
   changed_when: mod_dccp_remove.rc == 0
-  when: lsmod.stdout | search('dccp.*')
+  when: lsmod.stdout is search('dccp.*')
   tags:
     - level1
     - level1_section3

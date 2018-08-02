@@ -39,7 +39,7 @@
     - "--flush"
     - "--delete-chain"
     - "--zero"
-  when: cis_firewall_default_policy == true and accept|changed
+  when: cis_firewall_default_policy == true and accept is changed
   register: flush
   tags:
     - level1
@@ -55,7 +55,7 @@
      destination_port: 22
      protocol: tcp
      jump: ACCEPT
-  when: cis_firewall_default_policy == true and flush|changed
+  when: cis_firewall_default_policy == true and flush is changed
   tags:
     - level1
     - level1_section3
@@ -68,7 +68,7 @@
      chain: INPUT
      ctstate: ESTABLISHED,RELATED
      jump: ACCEPT
-  when: cis_firewall_default_policy == true and flush|changed
+  when: cis_firewall_default_policy == true and flush is changed
   tags:
     - level1
     - level1_section3
@@ -82,7 +82,7 @@
      chain: OUTPUT
      ctstate: NEW,ESTABLISHED
      jump: ACCEPT
-  when: cis_firewall_default_policy == true and flush|changed
+  when: cis_firewall_default_policy == true and flush is changed
   tags:
     - level1
     - level1_section3
@@ -93,7 +93,7 @@
 
 - name: 3.6.2 Ensure default deny firewall policy (Scored)
   command: /sbin/iptables -P {{ item }} DROP
-  when: cis_firewall_default_policy == true and flush|changed
+  when: cis_firewall_default_policy == true and flush is changed
   with_items:
     - INPUT
     - OUTPUT
@@ -110,7 +110,7 @@
 - name: 3.6.2 Save configuration
   shell: /sbin/iptables-save > /etc/sysconfig/iptables
   notify: restart iptables
-  when: fw | changed
+  when: fw is changed
   tags:
     - level1
     - level1_section3
@@ -124,7 +124,7 @@
     name: iptables.service
     state: restarted
     enabled: yes
-  when: fw | changed
+  when: fw is changed
   tags:
     - level1
     - level1_section3

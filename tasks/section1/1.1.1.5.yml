@@ -14,7 +14,7 @@
 - name: 1.1.1.5 - Check if hfsplus is disabled
   command: modprobe -n -v hfsplus
   register: mod_hfsplus
-  changed_when: mod_hfsplus.stdout | search('hfsplus')
+  changed_when: mod_hfsplus.stdout is search('hfsplus')
   check_mode: false
   failed_when: mod_hfsplus.rc not in (0,1)
   tags:
@@ -32,13 +32,13 @@
     - section1
     - "1.1.1.5"
     - scored
-  changed_when: lsmod.stdout | search('hfsplus')
+  changed_when: lsmod.stdout is search('hfsplus')
 
 - name: 1.1.1.5 - Unload hfsplus if required
   command: modprobe -r hfsplus
   register: mod_hfsplus_remove
   changed_when: mod_hfsplus_remove.rc == 0
-  when: lsmod.stdout | search('hfsplus.*')
+  when: lsmod.stdout is search('hfsplus.*')
   tags:
     - level1
     - section1

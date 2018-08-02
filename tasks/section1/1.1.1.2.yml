@@ -15,7 +15,7 @@
   command: modprobe -n -v freevxfs
   register: mod_freevxfs
   check_mode: false
-  changed_when: mod_freevxfs.stdout | search('freevxfs')
+  changed_when: mod_freevxfs.stdout is search('freevxfs')
   failed_when: mod_freevxfs.rc not in (0,1)
   tags:
     - level1
@@ -32,13 +32,13 @@
     - section1
     - "1.1.1.2"
     - scored
-  changed_when: lsmod.stdout | search('freevxfs')
+  changed_when: lsmod.stdout is search('freevxfs')
 
 - name: 1.1.1.2 - Unload freevxfs if required
   command: modprobe -r freevxfs
   register: mod_freevxfs_remove
   changed_when: mod_freevxfs_remove.rc == 0
-  when: lsmod.stdout | search('freevxfs.*')
+  when: lsmod.stdout is search('freevxfs.*')
   tags:
     - level1
     - section1
