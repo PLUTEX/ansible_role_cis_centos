@@ -5,6 +5,6 @@
   lineinfile:
     dest: /etc/postfix/main.cf
     regexp: "^(#)?inet_interfaces"
-    line: "inet_interfaces = localhost"
+    line: "inet_interfaces = loopback-only"
   when: cis_mail_server == false and postfix_installed.results[1].yumstate == 'installed'
   notify: restart postfix
