@@ -8,8 +8,7 @@
     fstype: "{{ item.fstype }}"
     src: "{{ item.device }}"
     opts: "{{ item.options.split(',') | union(['nosuid']) | join(',') }}"
-  when: item.mount == '/tmp'
-  with_items: "{{ ansible_mounts }}"
+  with_items: "{{ ansible_mounts | selectattr('mount', 'equalto', '/tmp') | list }}"
   tags:
     - level1
     - section1

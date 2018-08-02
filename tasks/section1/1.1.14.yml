@@ -8,8 +8,7 @@
     fstype: "{{ item.fstype }}"
     src: "{{ item.device }}"
     opts: "{{ item.options.split(',') | union(['nodev']) | join(',') }}"
-  when: item.mount == '/var/tmp'
-  with_items: "{{ ansible_mounts }}"
+  with_items: "{{ ansible_mounts | selectattr('mount', 'equalto', '/var/tmp') | list }}"
   tags:
     - level1
     - section1

@@ -1,19 +1,8 @@
 ---
 # 1.1.7 Ensure separate partition exists for /var/tmp (Scored)
 - name: 1.1.7 Ensure separate partition exists for /var/tmp (Scored)
-  shell: mount | grep /dev
-  register: var_mount
-  changed_when: false
-  check_mode: false
-  tags:
-    - section1
-    - level2
-    - section1_level2
-    - "1.1.7"
-
-- name: 1.1.7 Ensure separate partition exists for /var/tmp (Scored)
   debug: msg="***Manually create separete /var/tmp partition"
-  when: "'/var/tmp' not in var_mount.stdout"
+  when: "not (ansible_mounts | selectattr('mount', 'equalto', '/var/tmp') | list)"
   tags:
     - section1
     - level2
