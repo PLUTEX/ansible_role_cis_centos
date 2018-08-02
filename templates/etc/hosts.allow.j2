@@ -8,4 +8,4 @@
 #		for information on rule syntax.
 #		See 'man tcpd' for information on tcp_wrappers
 #
-ALL: {% for iprange in cis_hosts_allow_all_ips -%}{{ iprange }}, {% endfor %}
+ALL: {{ cis_hosts_allow_all_ips | join(', ') }}
