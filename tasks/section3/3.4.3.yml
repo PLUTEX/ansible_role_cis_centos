@@ -6,6 +6,7 @@
      dest: /etc/hosts.deny
      regexp: "^(#)?ALL"
      line: "ALL: ALL"
+     create: yes
      owner: root
      group: root
      mode: 0644

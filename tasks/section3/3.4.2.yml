@@ -2,9 +2,11 @@
 # 3.4.2 Ensure /etc/hosts.allow is configured (Scored)
 
 - name: 3.4.2 Ensure /etc/hosts.allow is configured (Scored)
-  template:
-     src: etc/hosts.allow.j2
-     dest: /etc/hosts.allow
+  lineinfile:
+     path: /etc/hosts.allow
+     regexp: "^(#)?ALL"
+     line: 'ALL: {{ cis_hosts_allow_all_ips | join(", ") }}'
+     create: yes
      owner: root
      group: root
      mode: 0644
