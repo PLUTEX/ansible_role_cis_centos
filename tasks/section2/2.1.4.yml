@@ -5,7 +5,7 @@
   service:
     name: "{{ item }}"
     state: stopped
-    enable: false
+    enabled: false
   with_items:
     - echo-dgram
     - echo-stream
