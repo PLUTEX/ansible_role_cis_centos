@@ -6,4 +6,6 @@
     name: dhcpd
     state: stopped
     enabled: no
-  when: cis_dhcp_server == false and dhcpd_service_status.stdout == "loaded"
+  register: dhcpd_systemd_output
+  failed_when: dhcpd_systemd_output.msg is defined and "Could not find" not in dhcpd_systemd_output.msg and "not found on host" not in dhcpd_systemd_output.msg
+  when: cis_dhcp_server == false

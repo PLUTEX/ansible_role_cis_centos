@@ -6,4 +6,6 @@
     name: tftp.socket
     state: stopped
     enabled: no
-  when: cis_tftp_server == false and tftp_service_status.stdout == "loaded"
+  register: tftp_systemd_output
+  failed_when: tftp_systemd_output.msg is defined and "Could not find" not in tftp_systemd_output.msg and "not found on host" not in tftp_systemd_output.msg
+  when: cis_tftp_server == false

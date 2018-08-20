@@ -6,4 +6,6 @@
     name: ypserv
     state: stopped
     enabled: no
-  when: cis_nis_server == false and ypserv_service_status.stdout == "loaded"
+  register: ypserv_systemd_output
+  failed_when: ypserv_systemd_output.msg is defined and "Could not find" not in ypserv_systemd_output.msg and "not found on host" not in ypserv_systemd_output.msg
+  when: cis_nis_server == false

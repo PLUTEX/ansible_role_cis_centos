@@ -6,4 +6,6 @@
     name: slapd
     state: stopped
     enabled: no
-  when: cis_ldap_server == false and slapd_service_status.stdout == "loaded"
+  register: slapd_systemd_output
+  failed_when: slapd_systemd_output.msg is defined and "Could not find" not in slapd_systemd_output.msg and "not found on host" not in slapd_systemd_output.msg
+  when: cis_ldap_server == false

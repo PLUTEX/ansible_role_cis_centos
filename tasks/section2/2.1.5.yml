@@ -9,4 +9,5 @@
   with_items:
     - time-dgram
     - time-stream
-  when: time_service_status.changed
+  register: time_systemd_output
+  failed_when: time_systemd_output.msg is defined and "Could not find" not in time_systemd_output.msg and "not found on host" not in time_systemd_output.msg

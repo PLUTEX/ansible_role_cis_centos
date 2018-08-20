@@ -7,12 +7,13 @@
     state: stopped
     enabled: no
     masked: yes
-  when: firewalld_service_status.stdout == "loaded" and
-        cis_firewall_default_policy == true
+  register: firewalld_systemd_output
+  failed_when: firewalld_systemd_output.msg is defined and "Could not find" not in ntalk_systemd_output.msg and "not found on host" not in ntalk_systemd_output.msg
+  when: cis_firewall_default_policy == true
 
 - name: 3.6.2 Set default policy to ACCEPT
   command: /sbin/iptables -P {{ item }} ACCEPT
-  when: firewalld_service_status.stdout == "loaded" and
+  when: firewalld_systemd_output.changed and
         cis_firewall_default_policy == true
   with_items:
     - INPUT

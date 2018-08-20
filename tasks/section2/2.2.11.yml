@@ -3,7 +3,9 @@
 
 - name: 2.2.11 Ensure IMAP and POP3 server is not enabled (Scored)
   systemd:
-    name: httpd
+    name: dovecot
     state: stopped
     enabled: no
-  when: cis_dovecot_server == false and dovecot_service_status.stdout == "loaded"
+  register: dovecot_systemd_output
+  failed_when: dovecot_systemd_output.msg is defined and "Could not find" not in dovecot_systemd_output.msg and "not found on host" not in dovecot_systemd_output.msg
+  when: cis_dovecot_server == false

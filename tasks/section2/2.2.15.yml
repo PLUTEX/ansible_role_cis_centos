@@ -1,6 +1,14 @@
 ---
 # 2.2.15 Ensure mail transfer agent is configured for local-only mode (Scored)
 
+- name: 2.2.15 Check if postfix package is installed
+  yum: list=postfix
+  changed_when: no
+  failed_when: no
+  check_mode: no
+  ignore_errors: true
+  register: postfix_installed
+
 - name: 2.2.15 Ensure mail transfer agent is configured for local-only mode (Scored)
   lineinfile:
     dest: /etc/postfix/main.cf

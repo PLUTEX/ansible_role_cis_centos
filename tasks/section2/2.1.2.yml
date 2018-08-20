@@ -9,4 +9,5 @@
   with_items:
     - daytime-dgram
     - daytime-stream
-  when: daytime_service_status.changed
+  register: daytime_systemd_output
+  failed_when: daytime_systemd_output.msg is defined and "Could not find" not in daytime_systemd_output.msg and "not found on host" not in daytime_systemd_output.msg

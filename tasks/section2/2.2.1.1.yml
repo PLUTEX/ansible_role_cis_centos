@@ -19,7 +19,9 @@
     name: ntpd
     state: stopped
     enabled: no
-  when: cis_enable_chrony and ntpd_service_status.stdout == "loaded"
+  register: ntpd_systemd_output
+  failed_when: ntpd_systemd_output.msg is defined and "Could not find" not in ntpd_systemd_output.msg and "not found on host" not in ntpd_systemd_output.msg
+  when: cis_enable_chrony
 
 - name: 2.2.1.1 Ensure time synchronization is in use (Not Scored)
   yum:
@@ -39,4 +41,6 @@
     name: chronyd
     state: stopped
     enabled: no
-  when: cis_enable_ntp and chronyd_service_status.stdout == "loaded"
+  register: chronyd_systemd_output
+  failed_when: chronyd_systemd_output.msg is defined and "Could not find" not in chronyd_systemd_output.msg and "not found on host" not in chronyd_systemd_output.msg
+  when: cis_enable_ntp

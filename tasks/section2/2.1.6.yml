@@ -9,4 +9,5 @@
   with_items:
     - tftp-dgram
     - tftp-stream
-  when: tftp_service_status.changed
+  register: tftp_systemd_output
+  failed_when: tftp_systemd_output.msg is defined and "Could not find" not in tftp_systemd_output.msg and "not found on host" not in tftp_systemd_output.msg

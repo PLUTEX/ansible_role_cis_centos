@@ -9,4 +9,5 @@
   with_items:
     - discard-dgram
     - discard-stream
-  when: discard_service_status.changed
+  register: discard_systemd_output
+  failed_when: discard_systemd_output.msg is defined and "Could not find" not in discard_systemd_output.msg and "not found on host" not in discard_systemd_output.msg

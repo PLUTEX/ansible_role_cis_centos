@@ -6,4 +6,6 @@
     name: rsyncd
     state: stopped
     enabled: no
-  when: cis_rsync_server == false and rsyncd_service_status.stdout == "loaded"
+  register: rsync_systemd_output
+  failed_when: rsync_systemd_output.msg is defined and "Could not find" not in rsync_systemd_output.msg and "not found on host" not in rsync_systemd_output.msg
+  when: cis_rsync_server == false

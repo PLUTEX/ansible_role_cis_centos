@@ -6,18 +6,21 @@
     name: rsh.socket
     state: stopped
     enabled: no
-  when: rsh_service_status.stdout == "loaded"
+  register: rsh_systemd_output
+  failed_when: rsh_systemd_output.msg is defined and "Could not find" not in rsh_systemd_output.msg and "not found on host" not in rsh_systemd_output.msg
 
 - name: 2.2.17 Ensure rsh server is not enabled (Scored) - rlogin
   systemd:
     name: rlogin.socket
     state: stopped
     enabled: no
-  when: rlogin_service_status.stdout == "loaded"
+  register: rlogin_systemd_output
+  failed_when: rlogin_systemd_output.msg is defined and "Could not find" not in rlogin_systemd_output.msg and "not found on host" not in rlogin_systemd_output.msg
 
 - name: 2.2.17 Ensure rsh server is not enabled (Scored) - rexec
   systemd:
     name: rexec.socket
     state: stopped
     enabled: no
-  when: rexec_service_status.stdout == "loaded"
+  register: rexec_systemd_output
+  failed_when: rexec_systemd_output.msg is defined and "Could not find" not in rexec_systemd_output.msg and "not found on host" not in rexec_systemd_output.msg

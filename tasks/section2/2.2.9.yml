@@ -6,4 +6,6 @@
     name: vsftpd
     state: stopped
     enabled: no
-  when: cis_ftp_server == false and vsftpd_service_status.stdout == "loaded"
+  register: vsftpd_systemd_output
+  failed_when: vsftpd_systemd_output.msg is defined and "Could not find" not in vsftpd_systemd_output.msg and "not found on host" not in vsftpd_systemd_output.msg
+  when: cis_ftp_server == false

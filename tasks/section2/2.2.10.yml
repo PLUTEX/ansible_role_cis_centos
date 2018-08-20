@@ -6,4 +6,6 @@
     name: httpd
     state: stopped
     enabled: no
-  when: cis_http_server == false and httpd_service_status.stdout == "loaded"
+  register: httpd_systemd_output
+  failed_when: httpd_systemd_output.msg is defined and "Could not find" not in httpd_systemd_output.msg and "not found on host" not in httpd_systemd_output.msg
+  when: cis_http_server == false

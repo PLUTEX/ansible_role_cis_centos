@@ -6,11 +6,15 @@
     name: nfs
     state: stopped
     enabled: no
-  when: cis_nfs_server == false and nfs_service_status.stdout == "loaded"
+  register: nfs_systemd_output
+  failed_when: nfs_systemd_output.msg is defined and "Could not find" not in nfs_systemd_output.msg and "not found on host" not in nfs_systemd_output.msg
+  when: cis_nfs_server == false
 
 - name: 2.2.7 Ensure NFS and RPC are not enabled (Scored) - client
   systemd:
     name: nfs
     state: stopped
     enabled: no
-  when: cis_rpcbind_server == false and rpcbind_service_status.stdout == "loaded"
+  register: rpcbind_systemd_output
+  failed_when: rpcbind_systemd_output.msg is defined and "Could not find" not in rpcbind_systemd_output.msg and "not found on host" not in rpcbind_systemd_output.msg
+  when: cis_rpcbind_server == false

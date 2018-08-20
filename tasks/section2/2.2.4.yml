@@ -6,4 +6,6 @@
     name: cups
     state: stopped
     enabled: no
-  when: cis_cups_server == false and cups_service_status.stdout == "loaded"
+  register: cups_systemd_output
+  failed_when: cups_systemd_output.msg is defined and "Could not find" not in cups_systemd_output.msg and "not found on host" not in cups_systemd_output.msg
+  when: cis_cups_server == false

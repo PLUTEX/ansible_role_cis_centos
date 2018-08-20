@@ -6,4 +6,6 @@
     name: ntalk
     state: stopped
     enabled: no
-  when: cis_ntalk_server == false and ntalk_service_status.stdout == "loaded"
+  register: ntalk_systemd_output
+  failed_when: ntalk_systemd_output.msg is defined and "Could not find" not in ntalk_systemd_output.msg and "not found on host" not in ntalk_systemd_output.msg
+  when: cis_ntalk_server == false

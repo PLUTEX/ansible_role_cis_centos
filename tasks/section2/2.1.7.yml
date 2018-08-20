@@ -6,4 +6,5 @@
     name: xinetd
     state: stopped
     enabled: false
-  when: xinetd_service_status.stdout == "loaded"
+  register: xinetd_systemd_output
+  failed_when: xinetd_systemd_output.msg is defined and "Could not find" not in xinetd_systemd_output.msg and "not found on host" not in xinetd_systemd_output.msg

@@ -9,4 +9,5 @@
   with_items:
     - echo-dgram
     - echo-stream
-  when: echo_service_status.changed
+  register: echo_systemd_output
+  failed_when: echo_systemd_output.msg is defined and "Could not find" not in echo_systemd_output.msg and "not found on host" not in echo_systemd_output.msg
