@@ -1,10 +1,6 @@
 ---
 # 1.1.2 Ensure separate partition exists for /tmp (Scored)
 
-- name: 1.1.2 - Ensure separate partition exists for /tmp (Scored)
-  debug: msg="***Manually create separete /tmp partition"
-  when: "not (ansible_mounts | selectattr('mount', 'equalto', '/tmp') | list)"
-
 - name: 1.1.2 Ensure separate partition exists for /tmp (Scored)
   systemd:
     name: tmp.mount
