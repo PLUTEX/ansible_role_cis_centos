@@ -7,8 +7,12 @@
     state: present
 
 - name: 1.3.1 Initialize AIDE (scored)
+  stat:
+    path: "{{ cis_aide_database_filename }}"
+  register: aide_database
+
+- name: 1.3.1 Initialize AIDE (scored)
   command: /usr/sbin/aide --init -B 'database_out=file:{{ cis_aide_database_filename }}'
-  args:
-    creates: "{{ cis_aide_database_filename }}"
+  when: not aide_database.stat.exists
   async: 45
   poll: 0
