@@ -19,13 +19,19 @@
   register: unitfile
   when: not tmp_mounted.changed
 
+- name: 1.1.3 - Create tmp.mount override directory
+  file:
+    path: /etc/systemd/system/tmp.mount.d
+    state: directory
+  when: not tmp_mounted.changed and unitfile.stat.exists
+
 - name: "1.1.3 - Ensure nodev option set on /tmp partition\n
          1.1.4 Ensure nosuid option set on /tmp partition (Scored)\n
          1.1.5 Ensure noexec option set on /tmp partition (Scored)"
-  lineinfile:
-    dest: /etc/systemd/system/local-fs.target.wants/tmp.mount
-    regexp: "^Options="
-    insertafter: "^Type="
-    line: "Options=mode=1777,strictatime,noexec,nodev,nosuid"
-  when: unitfile.stat.exists and not tmp_mounted.changed
+  copy:
+    dest: /etc/systemd/system/tmp.mount.d/options.conf
+    content: |
+      [Mount]
+      Options=mode=1777,strictatime,noexec,nodev,nosuid
+  when: not tmp_mounted.changed and unitfile.stat.exists
   notify: restart tmp.mount
